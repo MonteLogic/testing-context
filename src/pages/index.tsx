@@ -7,15 +7,15 @@ import Child from "../components/Child";
 import React, { createContext, useState } from "react";
 
 interface ThemeCtx {
-  darkTheme: boolean;
-  setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
+  inputValue: string;
+  setInputVal: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const ThemeContext = createContext<ThemeCtx>({darkTheme:false, setDarkTheme:()=>null});
+export const ThemeContext = createContext<ThemeCtx>({inputValue:"value1", setInputVal:()=>null});
 
 
 const Home: NextPage = () => {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [inputValue, setInputVal] = useState("value1");
 
   return (
     <>
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
+        <ThemeContext.Provider value={{ inputValue, setInputVal}}>
           <AnotherChild/>
           <Child />
 
