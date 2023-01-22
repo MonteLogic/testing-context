@@ -12,10 +12,18 @@ const RadioOption: React.FC<RadioOptionProps> = ({ value, label }) => {
 
   return (
     <>
-      <input type="radio" name="inputValue" value={value} onChange={e => setInputVal(e.target.value)} checked={inputValue === value} /> {label}
+      <input
+        type="radio"
+        name="inputValue"
+        value={value}
+        onChange={(e) => setInputVal(e.target.value)}
+        checked={inputValue === value}
+      />
+      {label}
+      <p>{inputValue}</p>
     </>
   );
-}
+};
 
 export default function GrandChild(input: any) {
   return (
