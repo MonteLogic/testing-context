@@ -1,34 +1,28 @@
 import { useContext } from "react";
-
 import { ThemeContext } from "../pages/index";
 
-export default function GrandChild(input: any) {
-  console.log(input);
+interface RadioOptionProps {
+  value: string;
+  label: string;
+}
 
+const RadioOption: React.FC<RadioOptionProps> = ({ value, label }) => {
   const { inputValue, setInputVal } = useContext(ThemeContext);
-
   console.log(inputValue);
 
-  const makeVal2 = () => {
-    setInputVal("value2");
-  };
-  const makeVal3 = () => {
-    console.log(input);
-    setInputVal("value3");
-  };
-  const makeVal4 = () => {
-    console.log(input);
-    setInputVal("value4");
-  };
   return (
     <>
-      <button onClick={makeVal2}>Make value2</button>
-      <br />
-      <br />
-      <button onClick={makeVal3}>Make value3</button>
-      <br />
-      <br />
-      <button onClick={makeVal4}>Make value4</button>
+      <input type="radio" name="inputValue" value={value} onChange={e => setInputVal(e.target.value)} checked={inputValue === value} /> {label}
+    </>
+  );
+}
+
+export default function GrandChild(input: any) {
+  return (
+    <>
+      <RadioOption value="value2" label="Make value2" />
+      <RadioOption value="value3" label="Make value3" />
+      <RadioOption value="value4" label="Make value4" />
     </>
   );
 }
